@@ -1,7 +1,6 @@
 # Default parameters
 class puppet::params {
 
-  include foreman::params
 
   # Basic config
   $version             = 'present'
@@ -57,6 +56,7 @@ class puppet::params {
   $server_vardir              = '/var/lib/puppet'
   $server_ca                  = true
   $server_reports             = 'foreman'
+  $server_foreman             = true
   $server_implementation      = 'master'
   $server_passenger           = true
   $server_service_fallback    = true
@@ -69,6 +69,17 @@ class puppet::params {
   $server_certname            = $::clientcert
   $server_strict_variables    = false
   $server_additional_settings = {}
+  if $server_foreman {
+    #include foreman::params
+    $server_foreman_url            = $foreman::params::foreman_url
+    $server_foreman_ssl_ca         = $foreman::params::client_ssl_ca
+    $server_foreman_ssl_cert       = $foreman::params::client_ssl_cert
+    $server_foreman_ssl_key        = $foreman::params::client_ssl_key
+    $server_facts                  = $foreman::params::receive_facts
+    $server_puppet_home            = $foreman::params::puppet_home
+    $server_puppet_basedir         = $foreman::params::puppet_basedir
+  }
+
 
   # Need a new master template for the server?
   $server_template = 'puppet/server/puppet.conf.erb'

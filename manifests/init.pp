@@ -380,13 +380,13 @@ class puppet (
   $server_ca_proxy               = $puppet::params::server_ca_proxy,
   $server_strict_variables       = $puppet::params::server_strict_variables,
   $server_additional_settings    = $puppet::params::server_additional_settings,
-  $server_foreman_url            = $foreman::params::foreman_url,
-  $server_foreman_ssl_ca         = $foreman::params::client_ssl_ca,
-  $server_foreman_ssl_cert       = $foreman::params::client_ssl_cert,
-  $server_foreman_ssl_key        = $foreman::params::client_ssl_key,
-  $server_facts                  = $foreman::params::receive_facts,
-  $server_puppet_home            = $foreman::params::puppet_home,
-  $server_puppet_basedir         = $foreman::params::puppet_basedir
+  #$server_foreman_url            = $foreman::params::foreman_url,
+  #$server_foreman_ssl_ca         = $foreman::params::client_ssl_ca,
+  #$server_foreman_ssl_cert       = $foreman::params::client_ssl_cert,
+  #$server_foreman_ssl_key        = $foreman::params::client_ssl_key,
+  #$server_facts                  = $foreman::params::receive_facts,
+  #$server_puppet_home            = $foreman::params::puppet_home,
+  #$server_puppet_basedir         = $foreman::params::puppet_basedir
 ) inherits puppet::params {
 
   validate_bool($listen)
